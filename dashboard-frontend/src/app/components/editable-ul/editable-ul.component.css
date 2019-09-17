@@ -1,0 +1,99 @@
+.editable-ul {
+  list-style: none;
+  margin: 0 1.6rem;
+}
+
+.editable-ul__li {
+  position: relative;
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+}
+
+.editable-ul__li-a,
+.editable-ul__li-editable {
+  display: block;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: lowercase;
+  max-width: 90%;
+  word-wrap: break-word;
+  min-width: 20%;
+  min-height: 1rem;
+}
+
+.editable-ul__li-a:first-letter,
+.editable-ul__li-editable:first-letter {
+  text-transform: uppercase;
+}
+
+.editable-ul__li-checkbox {
+  appearance: none;
+}
+
+.editable-ul__li-span {
+  position: absolute;
+  width: 1.2rem;
+  height: 1.2rem;
+  border: solid 1px #000;
+  border-radius: 50%;
+  margin-left: -2rem;
+  top: 0.15rem;
+}
+
+.editable-ul__li-checkbox:checked + .editable-ul__li-span {
+  background-image: url(../../../assets/img/completed.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+}
+
+.editable-ul__li-textarea {
+  margin: 0;
+  padding: 0;
+  width: 150%;
+  max-width: 150%;
+  color: #000;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: lowercase;
+  outline: none;
+  font-family: inherit;
+  border: none;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+  word-wrap: inherit;
+  overflow: hidden;
+  resize: none;
+  padding-bottom: 0.1rem;
+}
+
+.editable-ul__li-button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+  width: 1.2rem;
+  height: 1.2rem;
+  background-image: url(../../../assets/img/cros.png);
+  background-repeat: no-repeat;
+  background-size: 50%;
+  background-position: 50%;
+  position: absolute;
+  right: 0;
+  top: 0.1rem;
+  outline: none;
+}
+
+.editable-ul__li-button:active {
+  background-image: url(../../../assets/img/crosred.png);
+  background-color: rgba(0, 0, 0, 0.24);
+}
+
+.editable-ul__li-button:hover {
+  background-image: url(../../../assets/img/crosred.png);
+}

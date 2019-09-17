@@ -1,0 +1,63 @@
+<ng-container *ngIf="task; else elseBlock">
+  <h1 #h1 class="text0-indent-20">
+    <app-editable (update)="onViewModeH1()" (toEditMode)="onEditModeH1()">
+      <ng-template appViewMode>{{ task.title || 'New Task' }}</ng-template>
+      <ng-template appEditMode>
+        <textarea
+          [(ngModel)]="task.title"
+          appFocusable
+          appEditableOnEnter
+          cdkTextareaAutosize
+        ></textarea>
+      </ng-template>
+    </app-editable>
+  </h1>
+  <ul class="task-list" #subtaskList>
+    <li
+      *ngFor="let subtask of task.subtasks; let i = index; trackBy: trackByFn"
+      [attr.data-status]="subtask.status"
+      [attr.data-subtask-id]="subtask.id"
+    >
+      <label>
+        <input
+          [(ngModel)]="subtask.status"
+          (change)="changeSubStatus()"
+          type="checkbox"
+        />
+        <span></span>
+      </label>
+      <p>
+        <app-editable (update)="onViewModeSub(i)">
+          <ng-template appViewMode> {{ subtask.title }}</ng-template>
+          <ng-template appEditMode>
+            <textarea
+              [(ngModel)]="subtask.title"
+              appFocusable
+              appEditableOnEnter
+              cdkTextareaAutosize
+            ></textarea>
+          </ng-template>
+        </app-editable>
+      </p>
+      <button (click)="deleteSubtask(i)"></button>
+    </li>
+  </ul>
+  <section class="describe-block">
+    <img
+      class="describe-image"
+      src="../../assets/img/descr.png"
+      alt="describe"
+    /><textarea
+      [(ngModel)]="task.description"
+      (blur)="onDesctiptionBlur()"
+      cdkTextareaAutosize
+      placeholder="Add details"
+    ></textarea>
+  </section>
+</ng-container>
+<ng-template #elseBlock>
+  <h1>
+    Sorry<br />
+    this task does not exist
+  </h1>
+</ng-template>

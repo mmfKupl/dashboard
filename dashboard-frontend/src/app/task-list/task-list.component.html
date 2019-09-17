@@ -1,0 +1,8 @@
+<h1 class="text0-indent-20">My tasks</h1>
+
+<app-editable-ul
+  toggaleable="true"
+  linkEnable="true"
+  [dataList]="filteredTasks$ | async"
+  routePath="/task"
+></app-editable-ul>

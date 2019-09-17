@@ -1,0 +1,46 @@
+<ul class="editable-ul" *ngIf="dataList">
+  <ng-container>
+    <li class="editable-ul__li" *ngFor="let elem of dataList; let i = index">
+      <label class="editable-ul__li-label">
+        <input
+          class="editable-ul__li-checkbox"
+          [(ngModel)]="elem.status"
+          (change)="toggleStatus(i)"
+          type="checkbox"
+        />
+        <span class="editable-ul__li-span"></span>
+      </label>
+
+      <app-editable
+        class="editable-ul__li-editable"
+        (update)="updateElem(i)"
+        *ngIf="linkEnable !== 'true'; else elseNo"
+      >
+        <ng-template appViewMode>
+          {{ elem.title }}
+        </ng-template>
+
+        <ng-template appEditMode>
+          <textarea
+            class="editable-ul__li-textarea"
+            [(ngModel)]="elem.title"
+            appFocusable
+            appEditableOnEnter
+            cdkTextareaAutosize
+          ></textarea>
+        </ng-template>
+      </app-editable>
+      <ng-template #elseNo>
+        <a [routerLink]="['/task', elem.id]" class="editable-ul__li-a">{{
+          elem.title
+        }}</a>
+      </ng-template>
+
+      <button
+        class="editable-ul__li-button"
+        *ngIf="deletable === 'true'"
+        (click)="deleteElem(i)"
+      ></button>
+    </li>
+  </ng-container>
+</ul>
